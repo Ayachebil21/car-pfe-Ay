@@ -45,12 +45,17 @@
       </intent-filter>
 
       <!-- ✅ Intent filter pour Google Auth -->
-      <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="com.anonymous.carcrush" android:host="oauthredirect" />
-      </intent-filter>
+     <!-- Dans android/app/src/main/AndroidManifest.xml -->
+<intent-filter>
+  <action android:name="android.intent.action.VIEW"/>
+  <category android:name="android.intent.category.DEFAULT"/>
+  <category android:name="android.intent.category.BROWSABLE"/>
+  <data 
+      android:scheme="com.anonymous.carcrush"
+      android:host="oauthredirect"/>
+</intent-filter>
+      
+      
 
     </activity>
   </application>

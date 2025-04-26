@@ -20,14 +20,17 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "intentFilters": [
-        {
-          "action": "VIEW",
-          "data": [{ "scheme": "myapp" }],
-          "category": ["BROWSABLE", "DEFAULT"]
-        }
-      ]
-    },
+      "intentFilters": [{
+    "action": "VIEW",
+    "data": [{
+      "scheme": "com.anonymous.carcrush",
+      "host": "oauthredirect"
+    }],
+    "category": ["BROWSABLE", "DEFAULT"]
+  }]
+    
+   
+},
 
     "web": {
       "bundler": "metro",
