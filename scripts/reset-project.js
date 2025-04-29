@@ -1,3 +1,4 @@
+
 #!/usr/bin/env node
 
 /**
@@ -18,6 +19,7 @@ const exampleDirPath = path.join(root, exampleDir);
 
 const indexContent = `import { Text, View } from "react-native";
 
+npx expo config --json | findstr sdkVersion
 export default function Index() {
   return (
     <View

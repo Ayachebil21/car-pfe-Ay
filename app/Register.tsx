@@ -14,6 +14,8 @@ import CustomHeader from "@/components/CustomHeader";
 import { Picker } from "@react-native-picker/picker";
 import * as ImagePicker from "expo-image-picker";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from 'expo-router';
+
 import registrationFormats, {
   RegistrationFormat,
   PlatePart,
@@ -29,6 +31,8 @@ interface FormData {
 }
 
 const RegisterScreen = () => {
+  const router = useRouter();
+  
   const [formData, setFormData] = useState<FormData>({
     username: "",
     prenom: "",
@@ -119,6 +123,31 @@ const RegisterScreen = () => {
     }
     return result;
   };
+  const handleSubmit = () => {
+    const fullRegistrationNumber = generateFullRegistration();
+  
+    const dataToSend = {
+      ...formData,
+      country: selectedCountry.country,
+      registrationNumber: fullRegistrationNumber,
+    };
+  
+    console.log('✅ Données prêtes à envoyer :', dataToSend);
+  
+    Alert.alert(
+      'Succès', 
+      'Inscription réussie ! 🚀',
+      [
+        {
+          text: 'OK',
+          onPress: () => {
+            router.replace('/Login');
+          },
+        },
+      ]
+    );
+  };
+  
 
   const renderSerialInputs = () => {
     if (selectedCountry.country === "Tunisie") {
@@ -259,9 +288,10 @@ const RegisterScreen = () => {
 
         <View style={styles.fieldContainer}>{renderSerialInputs()}</View>
 
-        <TouchableOpacity style={styles.submitBtn}>
-          <Text style={styles.submitText}>Valider</Text>
-        </TouchableOpacity>
+        <TouchableOpacity style={styles.submitBtn} onPress={handleSubmit}>
+  <Text style={styles.submitText}>Valider</Text>
+</TouchableOpacity>
+
       </ScrollView>
     </SafeAreaView>
   );
